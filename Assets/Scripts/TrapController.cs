@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class TrapController : MonoBehaviour
 {
-    public float rotationSpeed = 100f;
+        public float rotationSpeed = 100f;
+    private Rigidbody rb;
 
-    void Update()
+    void Start()
     {
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+        Quaternion deltaRotation = Quaternion.Euler(0, rotationSpeed * Time.fixedDeltaTime, 0);
+        rb.MoveRotation(rb.rotation * deltaRotation);
     }
 
 }
