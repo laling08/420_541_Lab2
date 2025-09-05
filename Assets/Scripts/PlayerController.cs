@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10f;
     private Rigidbody rb;
+    private Vector3 movement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startPosition = transform.position;
     }
 
     void FixedUpdate() // Physics-related operations should go here
@@ -26,11 +28,17 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other)
-{
-    if (other.CompareTag("Goal"))
     {
-        Debug.Log("You Win");
+        if (other.CompareTag("Goal"))
+        {
+            Debug.Log("You Win");
+        }
+        else if (other.CompareTag("DeathPlane"))
+        {
+            rb.position = startPosition;
+        }
     }
-}
+
+
 
 }
