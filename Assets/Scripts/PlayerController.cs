@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10f;
     private Rigidbody rb;
-    private Vector3 movement;
+    private Vector3 startPosition;
 
     void Start()
     {
